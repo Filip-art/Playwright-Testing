@@ -23,12 +23,17 @@ test("User can add an item to the cart", async ({ page }) => {
 
     inventory.clickOnCart()
     await expect(page).toHaveURL("https://www.saucedemo.com/cart.html")
+})
 
-    // CART PAGE
+test("test the cart page", async({ page }) => {
+    const inventory = new InventoryPage(page)
+    const addToCartBtn = inventory.getAddToCartButton(productName)
+    addToCartBtn.click()
+    
     const cart = new Cart(page)
     const cartTitle = cart.pageTitle
     await expect(cartTitle).toHaveText("Your Cart")
-
+``
     const checkoutBtn = cart.checkoutBtn
     await expect(checkoutBtn).toBeVisible()
 
@@ -40,7 +45,9 @@ test("User can add an item to the cart", async ({ page }) => {
 
     cart.clickOnCheckout()
     await expect(page).toHaveURL("https://www.saucedemo.com/checkout-step-one.html")
+})
 
+test("first checkout page", async({ page }) => {
     // CHECKOUT USER INFORMATION
     const checkout = new CheckoutInfo(page)
     const checkoutTitleFirst = checkout.pageTitleFirst
@@ -50,7 +57,9 @@ test("User can add an item to the cart", async ({ page }) => {
     await checkout.fillUpForm()
     await checkout.clickOnContinue()
     await expect(page).toHaveURL("https://www.saucedemo.com/checkout-step-two.html")
+})
 
+test("checkout overview", async({ page }) => {
     // CHECKOUT OVERVIEW
     const checkoutTitleTwo = checkout.pageTitleSecond
     await expect(checkoutTitleTwo).toHaveText("Checkout: Overview")
@@ -62,12 +71,4 @@ test("User can add an item to the cart", async ({ page }) => {
     await expect(page).toHaveURL("https://www.saucedemo.com/checkout-complete.html")
     await expect(page.getByTestId('complete-header')).toHaveText("Thank you for your order!")
 })
-
-// test("User is correctly in the cart and proceeds to checkout", async ({ page }) => {
-
-
-
-
-// })
-
 })
