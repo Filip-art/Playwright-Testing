@@ -18,8 +18,8 @@ export class InventoryPage {
         return this.page.getByTestId(finalProductName)
     }
 
-    clickOnCart() {
-        this.page.getByTestId("shopping-cart-link").click()
+    async clickOnCart() {
+        await this.page.getByTestId("shopping-cart-link").click()
     }
 
 }

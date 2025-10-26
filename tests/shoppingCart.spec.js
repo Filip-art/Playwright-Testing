@@ -12,7 +12,6 @@ test.describe("Shopping cart working as expect", () => {
     const productName = "Sauce Labs Bike Light"
 
 test("User can add an item to the cart", async ({ page }) => {
-    // PRODUCTS PAGE
     const inventory = new InventoryPage(page)
     
     const addToCartBtn = inventory.getAddToCartButton(productName)
@@ -21,19 +20,19 @@ test("User can add an item to the cart", async ({ page }) => {
     await addToCartBtn.click()
     await expect(inventory.shoppingCartBadge).toHaveText("1")
 
-    inventory.clickOnCart()
+    await inventory.clickOnCart()
     await expect(page).toHaveURL("https://www.saucedemo.com/cart.html")
 })
 
 test("test the cart page", async({ page }) => {
     const inventory = new InventoryPage(page)
     const addToCartBtn = inventory.getAddToCartButton(productName)
-    addToCartBtn.click()
+    await addToCartBtn.click()
+    await inventory.clickOnCart()
     
     const cart = new Cart(page)
     const cartTitle = cart.pageTitle
     await expect(cartTitle).toHaveText("Your Cart")
-``
     const checkoutBtn = cart.checkoutBtn
     await expect(checkoutBtn).toBeVisible()
 
@@ -43,12 +42,18 @@ test("test the cart page", async({ page }) => {
     const shoppingCartBadge = cart.shoppingCartBadge
     await expect(shoppingCartBadge).toHaveText("1")
 
-    cart.clickOnCheckout()
+    await cart.clickOnCheckout()
     await expect(page).toHaveURL("https://www.saucedemo.com/checkout-step-one.html")
 })
 
 test("first checkout page", async({ page }) => {
-    // CHECKOUT USER INFORMATION
+    const inventory = new InventoryPage(page)
+    const addToCartBtn = inventory.getAddToCartButton(productName)
+    await addToCartBtn.click()
+    await inventory.clickOnCart()
+    const cart = new Cart(page)
+    await cart.clickOnCheckout()
+
     const checkout = new CheckoutInfo(page)
     const checkoutTitleFirst = checkout.pageTitleFirst
     // console.log(page.url())
@@ -60,7 +65,17 @@ test("first checkout page", async({ page }) => {
 })
 
 test("checkout overview", async({ page }) => {
-    // CHECKOUT OVERVIEW
+    const inventory = new InventoryPage(page)
+    const addToCartBtn = inventory.getAddToCartButton(productName)
+    await addToCartBtn.click()
+    await inventory.clickOnCart()
+    const cart = new Cart(page)
+    await cart.clickOnCheckout()
+    const checkout = new CheckoutInfo(page)
+
+    await checkout.fillUpForm()
+    await checkout.clickOnContinue()
+
     const checkoutTitleTwo = checkout.pageTitleSecond
     await expect(checkoutTitleTwo).toHaveText("Checkout: Overview")
 

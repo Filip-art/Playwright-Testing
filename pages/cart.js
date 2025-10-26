@@ -7,7 +7,7 @@ export class Cart{
         this.shoppingCartBadge = page.getByTestId("shopping-cart-badge")
     }
 
-    clickOnCheckout() {
-        this.checkoutBtn.click()
+    async clickOnCheckout() {
+        await this.checkoutBtn.click()
     }
 }
