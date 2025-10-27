@@ -45,6 +45,7 @@ export default defineConfig({
       use: { 
         ...devices['Desktop Chrome'], 
         storageState: 'playwright/.auth/user.json',
+        baseURL: 'https://jsonplaceholder.typicode.com'
       },
       dependencies: ['setup']
     },
@@ -54,6 +55,7 @@ export default defineConfig({
       use: { 
         ...devices['Desktop Firefox'], 
         storageState: 'playwright/.auth/user.json',
+        baseURL: 'https://jsonplaceholder.typicode.com'
       },
       dependencies: ['setup']
     },
@@ -63,7 +65,8 @@ export default defineConfig({
       name: 'webkit',
       use: { 
         ...devices['Desktop Safari'],
-        storageState: 'playwright/.auth/user.json' 
+        storageState: 'playwright/.auth/user.json' ,
+        baseURL: 'https://jsonplaceholder.typicode.com'
       },
       dependencies: ['setup']
     },
