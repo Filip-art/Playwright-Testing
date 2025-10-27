@@ -40,36 +40,65 @@ export default defineConfig({
       name: 'setup',
       testMatch: /.*\.setup\.js/,
     },
+
+    // UI TESTOVANI
     {
-      name: 'chromium',
+      name: 'chromium-ui',
+      testMatch: [/tests\/ui-tests\/.*\.spec\.js/,
+      /playground\/.*\.spec\.js/],
       use: { 
         ...devices['Desktop Chrome'], 
         storageState: 'playwright/.auth/user.json',
-        baseURL: 'https://jsonplaceholder.typicode.com'
       },
       dependencies: ['setup']
     },
 
     {
-      name: 'firefox',
+      name: 'firefox-ui',
+      testMatch: /tests\/ui-tests\/.*\.spec\.js/,
       use: { 
         ...devices['Desktop Firefox'], 
         storageState: 'playwright/.auth/user.json',
-        baseURL: 'https://jsonplaceholder.typicode.com'
       },
       dependencies: ['setup']
     },
-
-
     {
-      name: 'webkit',
+      name: 'webkit-ui',
+      testMatch: /tests\/ui-tests\/.*\.spec\.js/,
       use: { 
         ...devices['Desktop Safari'],
         storageState: 'playwright/.auth/user.json' ,
-        baseURL: 'https://jsonplaceholder.typicode.com'
       },
       dependencies: ['setup']
     },
+    
+    
+    // API TESTOVANI
+    {
+      name: 'chromium-api',
+      testMatch: /tests\/API-testing\/.*\api.spec\.js/,
+      use: { 
+        ...devices['Desktop Chrome'], 
+        baseURL: 'https://jsonplaceholder.typicode.com'
+      },
+    },
+
+    // {
+    //   name: 'firefox-api',
+    //   testMatch: /tests\/API-testing\/.*\api.spec\.js/,
+    //   use: { 
+    //     ...devices['Desktop Firefox'], 
+    //     baseURL: 'https://jsonplaceholder.typicode.com'
+    //   },
+    // },
+    // {
+    //   name: 'webkit-api',
+    //   testMatch: /tests\/API-testing\/.*\api.spec\.js/,
+    //   use: { 
+    //     ...devices['Desktop Safari'],
+    //     baseURL: 'https://jsonplaceholder.typicode.com'
+    //   },
+    // },
 
     /* Test against mobile viewports. */
     // {

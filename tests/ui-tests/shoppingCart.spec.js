@@ -1,7 +1,7 @@
 import { test, expect, describe, beforeEach } from '@playwright/test'
-import { InventoryPage } from '../pages/InventoryPage.js'
-import { Cart } from '../pages/cart.js'
-import { CheckoutInfo } from '../pages/checkoutInfo.js'
+import { InventoryPage } from '../../pages/InventoryPage.js'
+import { Cart } from '../../pages/cart.js'
+import { CheckoutInfo } from '../../pages/checkoutInfo.js'
 
 
 test.describe("Shopping cart working as expect", () => {
