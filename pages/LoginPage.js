@@ -6,6 +6,7 @@ export class LoginPage {
         this.loginButton = page.getByTestId("login-button")
         this.loginErrMsg = page.getByTestId("error")
         this.errorMsgBtn = page.getByTestId("error-button")
+        ``
     }
 
     async goto() {
