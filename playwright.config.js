@@ -48,7 +48,7 @@ export default defineConfig({
       /playground\/.*\.spec\.js/],
       use: { 
         ...devices['Desktop Chrome'], 
-        storageState: 'playwright/.auth/user.json',
+        storageState: 'playwright/.auth/demoqa-user.json',
       },
       dependencies: ['setup']
     },

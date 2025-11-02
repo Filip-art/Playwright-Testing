@@ -32,4 +32,31 @@ test.describe("API testy pro prispevky", () => {
         expect(data).toHaveProperty("id")
     })
 
+    test("měl by aktualizovat existující příspěvek", async ({ request }) => {
+        const endpoint = "/posts/1"
+
+        const payload = {
+            id: 1,
+            title: "Aktualizovaný název",
+            body: "Tohle je úiplně nový obsah",
+            userId: 1
+        }
+
+        const response = await request.put(endpoint, { data: payload })
+
+        expect(response.status()).toBe(200)
+
+        const data = await response.json()
+
+        expect(data.title).toBe(payload.title)
+    })
+
+    test("měl by smazat existující příspěvek", async ({ request }) => {
+        const endpoint = "/posts/1"
+
+        const response = await request.delete(endpoint)
+
+        expect(response.status()).toBe(200)
+    })
+
 })
