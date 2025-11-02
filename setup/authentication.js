@@ -1,5 +1,5 @@
 import { test as authentication, expect } from '@playwright/test'
-import { LoginPage } from '../pages/loginPage'
+import { LoginPage } from '../pages/loginPage.js'
 
 authentication("Retrieve a cookie", async ({ page }) => {
     const userLogin = new LoginPage(page)
