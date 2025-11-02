@@ -39,9 +39,13 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
+{
+      name: 'setup-saucedemo',
+      testMatch: /setup\/auth\.setup\.js/, 
+    },
     {
-      name: 'setup',
-      testMatch: /.*\.setup\.js/,
+      name: 'setup-demoqa',
+      testMatch: /setup\/demoqa-auth\.setup\.js/,
     },
 
     // UI TESTOVANI
@@ -56,24 +60,24 @@ export default defineConfig({
       dependencies: ['setup']
     },
 
-    {
-      name: 'firefox-ui',
-      testMatch: /tests\/ui-tests\/.*\.spec\.js/,
-      use: { 
-        ...devices['Desktop Firefox'], 
-        storageState: 'playwright/.auth/user.json',
-      },
-      dependencies: ['setup']
-    },
-    {
-      name: 'webkit-ui',
-      testMatch: /tests\/ui-tests\/.*\.spec\.js/,
-      use: { 
-        ...devices['Desktop Safari'],
-        storageState: 'playwright/.auth/user.json' ,
-      },
-      dependencies: ['setup']
-    },
+    // {
+    //   name: 'firefox-ui',
+    //   testMatch: /tests\/ui-tests\/.*\.spec\.js/,
+    //   use: { 
+    //     ...devices['Desktop Firefox'], 
+    //     storageState: 'playwright/.auth/user.json',
+    //   },
+    //   dependencies: ['setup']
+    // },
+    // {
+    //   name: 'webkit-ui',
+    //   testMatch: /tests\/ui-tests\/.*\.spec\.js/,
+    //   use: { 
+    //     ...devices['Desktop Safari'],
+    //     storageState: 'playwright/.auth/user.json' ,
+    //   },
+    //   dependencies: ['setup']
+    // },
     
     
     // API TESTOVANI
