@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test'
-import { LoginPage } from '../../pages/loginPage.js';
+import { LoginPage } from '../../pages/loginpage.js';
 
 test.describe("Přihlášení do Swag Labs", () => {
 

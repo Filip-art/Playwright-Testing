@@ -1,5 +1,5 @@
 import { test, expect, describe, beforeEach } from '@playwright/test'
-import { InventoryPage } from '../../pages/inventoryPage.js'
+import { InventoryPage } from '../../pages/inventorypage.js'
 
 const itemFromShop = "Sauce Labs Backpack"
 

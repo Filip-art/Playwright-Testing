@@ -1,5 +1,5 @@
 import { test, expect, describe, beforeEach } from '@playwright/test'
-import { InventoryPage } from '../../pages/inventoryPage.js'
+import { InventoryPage } from '../../pages/inventorypage.js'
 import { Cart } from '../../pages/cart.js'
 import { CheckoutInfo } from '../../pages/checkoutInfo.js'
 
